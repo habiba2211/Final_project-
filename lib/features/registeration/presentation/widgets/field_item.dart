@@ -8,6 +8,8 @@ class TextFieldItem extends StatelessWidget {
   final TextInputType? textInputType;
   final String? warningMessage;
   final bool required;
+  final Icon? postIcon;
+  final Icon? sufIcon;
 
   // static GlobalKey<FormState> formState=GlobalKey<FormState>();
 
@@ -19,6 +21,8 @@ class TextFieldItem extends StatelessWidget {
     required this.textInputType,
     this.warningMessage,
     this.required = true,
+    required this.postIcon,
+    required this.sufIcon,
   }) : super(key: key);
 
   @override
@@ -37,8 +41,10 @@ class TextFieldItem extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: textInputType,
         controller: controller,
-        textDirection: TextDirection.rtl,
+        // textDirection: TextDirection.rtl,
         decoration: InputDecoration(
+          suffix: sufIcon,
+          prefix: postIcon,
           labelText: txt,
           labelStyle: TextStyle(
             color: AppColors.mainColor,
@@ -63,4 +69,27 @@ class TextFieldItem extends StatelessWidget {
           ),
         ));
   }
-}
+} // TextField(
+// style: TextStyle(
+// color: Colors.white,
+// ),
+// keyboardType: TextInputType.emailAddress,
+// onSubmitted: (value) {
+// print(value);
+// },
+// onChanged: (value) {
+// print(value);
+// },
+// decoration: InputDecoration(
+// labelText: 'Enter Eimal or Phone',
+// labelStyle: TextStyle(
+// color: Colors.white,
+// ),
+// border: OutlineInputBorder(
+// borderRadius: BorderRadius.circular(40),
+// ),
+// prefixIcon: Icon(
+// Icons.email,
+// color: Colors.white24,
+// )),
+// ),

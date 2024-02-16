@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:final_project/layout/home_layout.dart';
+import 'package:final_project/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const String routeName = 'splash';
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void navigateToLoginPage() {
     Navigator.pushNamedAndRemoveUntil(
-        context, HomeLayout.routeName, (route) => false);
+        context, AppRoutes.login, (route) => false);
   }
 
   @override
