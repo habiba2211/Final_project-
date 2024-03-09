@@ -1,32 +1,15 @@
 import 'package:final_project/config/routes/routes.dart';
-import 'package:final_project/core/utils/controllers.dart';
+import 'package:final_project/features/registeration/presentation/bloc/registration_cubit.dart';
 import 'package:final_project/features/registeration/presentation/widgets/field_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-class SignUpScreen extends StatefulWidget {
+class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<SignUpScreen> {
-  // File? image;
-  // final imagePicker = ImagePicker();
-  //
-  // uploadImage() async {
-  //   var pickedImage = await imagePicker.pickImage(source: ImageSource.gallery);
-  //   if (pickedImage != null) {
-  //     setState(() {
-  //       image = File(pickedImage.path);
-  //     });
-  //   } else {}
-  // }
-
-  @override
   Widget build(BuildContext context) {
+    var cubit = context.read<RegistrationCubit>();
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
@@ -49,12 +32,12 @@ class _LoginScreenState extends State<SignUpScreen> {
                   height: 10.0,
                 ),
                 Form(
-                  key: formKey,
+                  key: cubit.formKey,
                   child: Column(
                     children: [
                       TextFieldItem(
                         txt: 'First Name',
-                        controller: Controllers.nameController,
+                        controller: cubit.nameController,
                         obscureText: false,
                         textInputType: TextInputType.text,
                         warningMessage: 'Please Enter First Name',
@@ -66,7 +49,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       ),
                       TextFieldItem(
                         txt: 'Last Name',
-                        controller: Controllers.lastNameController,
+                        controller: cubit.lastNameController,
                         obscureText: false,
                         textInputType: TextInputType.text,
                         warningMessage: 'Please Enter Last Name',
@@ -78,7 +61,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       ),
                       TextFieldItem(
                         txt: 'Phone Number',
-                        controller: Controllers.phoneController,
+                        controller: cubit.phoneController,
                         obscureText: false,
                         textInputType: TextInputType.phone,
                         warningMessage: 'Please Enter Phone Number',
@@ -90,7 +73,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       ),
                       TextFieldItem(
                         txt: 'Nationality',
-                        controller: Controllers.parPhoneController,
+                        controller: cubit.parPhoneController,
                         obscureText: false,
                         textInputType: TextInputType.phone,
                         warningMessage: 'Please Enter Your Nationality',
@@ -102,7 +85,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       ),
                       TextFieldItem(
                         txt: 'Email',
-                        controller: Controllers.emailController,
+                        controller: cubit.emailController,
                         obscureText: false,
                         textInputType: TextInputType.emailAddress,
                         warningMessage: 'Please Enter Your Email',
@@ -114,7 +97,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       ),
                       TextFieldItem(
                         txt: 'Password',
-                        controller: Controllers.passWordController,
+                        controller: cubit.passWordController,
                         obscureText: true,
                         textInputType: TextInputType.text,
                         warningMessage: 'Please Enter Your Password',
@@ -127,7 +110,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                       TextFieldItem(
                         txt: 'Address',
                         warningMessage: 'Please Enter Your Address',
-                        controller: Controllers.noteController,
+                        controller: cubit.noteController,
                         obscureText: false,
                         textInputType: TextInputType.text,
                         required: false,
@@ -147,15 +130,7 @@ class _LoginScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              FocusManager.instance.primaryFocus?.unfocus();
-                              Navigator.pushNamed(
-                                context,
-                                AppRoutes.login,
-                              );
-                            } else {
-                              return;
-                            }
+                            cubit.confirmForm();
                           },
                           child: const Text(
                             'Done',

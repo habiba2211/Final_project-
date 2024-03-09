@@ -9,6 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/di_manager.dart';
 import 'core/observers/bloc_observer.dart';
 
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   await dependencyInjectionInit();
@@ -32,9 +34,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
+        navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         initialRoute: "/",
-        onGenerateRoute: (settings) => Routes.OnGenerate(settings),
+        onGenerateRoute: (settings) => Routes.onGenerate(settings),
       ),
     );
   }

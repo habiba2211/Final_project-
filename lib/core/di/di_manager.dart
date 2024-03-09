@@ -1,3 +1,7 @@
+import 'package:final_project/features/control/presentation/manager/control_cubit.dart';
+import 'package:final_project/features/login/presentation/bloc/login_cubit.dart';
+import 'package:final_project/features/registeration/presentation/bloc/registration_cubit.dart';
+import 'package:final_project/layout/presentation/logic/home_layout_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -13,14 +17,17 @@ Future<void> dependencyInjectionInit() async {
 //   getIt.registerSingleton(localPrefs);
 //
 // =================================================================
-// shared cubit
-
+// registration cubit
+  getIt.registerFactory(() => RegistrationCubit());
 // =================================================================
-// home cubit
-
+// login cubit
+  getIt.registerFactory(() => LoginCubit());
 // =================================================================
-// benefits cubit
-
+// control cubit
+  getIt.registerFactory(() => ControlCubit());
+  // =================================================================
+// home layouy cubit
+  getIt.registerSingleton<HomeLayoutCubit>(HomeLayoutCubit());
 // =================================================================
 // experts cubit
 

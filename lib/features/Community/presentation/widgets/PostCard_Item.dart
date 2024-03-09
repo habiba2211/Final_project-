@@ -10,10 +10,10 @@ class PostCardItem extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 CircleAvatar(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.blueGrey,
                   radius: 20.0,
                   child: Icon(
                     Icons.person,
@@ -21,7 +21,7 @@ class PostCardItem extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8.0),
                   child: Column(
                     children: [
                       Text(
@@ -55,7 +55,7 @@ class PostCardItem extends StatelessWidget {
             Container(
               height: 80.0,
               alignment: Alignment.centerLeft,
-              child: Text(
+              child: const Text(
                 'My Post',
                 style: TextStyle(
                   fontSize: 25.0,
@@ -64,25 +64,20 @@ class PostCardItem extends StatelessWidget {
             ),
             Row(
               children: [
-                Text(
+                const Text(
                   '100',
                   style: TextStyle(),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 3.0,
                 ),
-                Image.asset(
-                  'assets/images/like.jpg',
-                  width: 25.0,
-                  height: 25.0,
-                ),
-                Spacer(),
-                Text('100 Comments'),
+                const Spacer(),
+                const Text('100 Comments'),
               ],
             ),
             Container(
               height: 40.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.black12),
                 ),

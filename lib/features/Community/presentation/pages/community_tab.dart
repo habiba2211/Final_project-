@@ -8,9 +8,11 @@ class CommunityTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text(
           'AI NABTA',
           style: TextStyle(
               fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white),
@@ -19,7 +21,7 @@ class CommunityTab extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
-          children: [
+          children: const [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -60,18 +62,3 @@ class CommunityTab extends StatelessWidget {
   }
 }
 
-// Text('Owner',
-//                       style: TextStyle(
-//                         color: Colors.white,
-//                       ),
-//                       ),
-
-// Card(
-//                   shape:OutlineInputBorder(
-//                     borderRadius: BorderRadius.circular(20.0),
-//                     borderSide: BorderSide(
-//                       style: BorderStyle.none,
-//                       color: Colors.black,
-//                     ),
-//                   ),
-//               ),

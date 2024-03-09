@@ -1,9 +1,17 @@
 import 'package:final_project/features/Community/presentation/pages/community_tab.dart';
+import 'package:final_project/features/control/presentation/manager/control_cubit.dart';
+import 'package:final_project/features/control/presentation/pages/control_screen.dart';
+import 'package:final_project/features/home/presentation/pages/home_screen.dart';
+import 'package:final_project/features/login/presentation/bloc/login_cubit.dart';
 import 'package:final_project/features/login/presentation/pages/login_screen.dart';
+import 'package:final_project/features/registeration/presentation/bloc/registration_cubit.dart';
 import 'package:final_project/features/registeration/presentation/pages/sign_up.dart';
 import 'package:final_project/layout/home_layout.dart';
 import 'package:final_project/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../core/di/di_manager.dart';
 
 class AppRoutes {
   // متعارف ان اول سكرينه بتفتح بنحطلها  "/"
@@ -12,30 +20,48 @@ class AppRoutes {
   static const String signUp = "SignUp";
   static const String community = "Community";
   static const String homeLayout = "HomeLayout";
+  static const String controlScreen = "ControlScreen";
+  static const String homeTap = "homeTap";
 }
 
 class Routes {
-  static Route OnGenerate(RouteSettings settings) {
+  static Route onGenerate(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splashScreen:
-        return MaterialPageRoute(builder: (context) => SplashScreen());
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
       case AppRoutes.login:
-        return MaterialPageRoute(builder: (context) => LoginScreen());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                  create: (_) => getIt<LoginCubit>(),
+                  child: const LoginScreen(),
+                ));
       case AppRoutes.signUp:
-        return MaterialPageRoute(builder: (context) => SignUpScreen());
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                create: (_) => getIt<RegistrationCubit>(),
+                child: const SignUpScreen()));
       case AppRoutes.homeLayout:
-        return MaterialPageRoute(builder: (context) => HomeLayout());
+        return MaterialPageRoute(builder: (context) => const HomeLayout());
+      case AppRoutes.homeTap:
+        return MaterialPageRoute(builder: (context) => const HomeTap());
       case AppRoutes.community:
-        return MaterialPageRoute(builder: (context) => CommunityTab());
+        return MaterialPageRoute(builder: (context) => const CommunityTab());
+      case AppRoutes.controlScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (_) => getIt<ControlCubit>(),
+            child: const ControlScreen(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(
-              appBar: AppBar(
-                title: const Text("UnDefine"),
-              ),
-              body: unDefineRoute(),
-            ));
+                  appBar: AppBar(
+                    title: const Text("UnDefine"),
+                  ),
+                  body: unDefineRoute(),
+                ));
     }
   }
 
