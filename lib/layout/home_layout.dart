@@ -54,9 +54,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     return Stack(
       children: [
         Image.asset(
-          "assets/images/zahra.jpg",
+          "assets/images/12.jpg",
           width: double.infinity,
-          fit: BoxFit.fill,
+          fit: BoxFit.fitHeight,
         ),
         Scaffold(
           backgroundColor: Colors.transparent,
@@ -111,7 +111,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     backgroundColor: Colors.transparent,
                     label: "Community"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.account_circle_sharp,
+                    icon: ImageIcon(AssetImage("assets/images/plant.png"),
                         color: index == 2
                             ? MyColors.tapBarIconColor
                             : MyColors.grayColor),
