@@ -1,5 +1,6 @@
 import 'package:final_project/features/Community/presentation/pages/community_tab.dart';
 import 'package:final_project/features/control/presentation/manager/control_cubit.dart';
+import 'package:final_project/features/control/presentation/pages/blouetooth_screen.dart';
 import 'package:final_project/features/control/presentation/pages/control_screen.dart';
 import 'package:final_project/features/home/presentation/pages/home_screen.dart';
 import 'package:final_project/features/login/presentation/bloc/login_cubit.dart';
@@ -22,6 +23,7 @@ class AppRoutes {
   static const String homeLayout = "HomeLayout";
   static const String controlScreen = "ControlScreen";
   static const String homeTap = "homeTap";
+  static const String bluetooth = "bluetoothTab";
 }
 
 class Routes {
@@ -53,6 +55,8 @@ class Routes {
             child: const ControlScreen(),
           ),
         );
+      case AppRoutes.bluetooth:
+        return MaterialPageRoute(builder: (context) => BluetoothScreen());
 
       default:
         return MaterialPageRoute(
