@@ -7,6 +7,7 @@ import 'package:final_project/features/control/presentation/manager/control_cubi
 import 'package:final_project/features/control/presentation/pages/control_screen.dart';
 import 'package:final_project/features/home/presentation/pages/home_screen.dart';
 import 'package:final_project/features/home/presentation/widgets/model.dart';
+import 'package:final_project/features/settings/presentation/pages/SettingScreen.dart';
 import 'package:final_project/layout/presentation/logic/home_layout_cubit.dart';
 import 'package:final_project/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +47,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       create: (context) => getIt<ControlCubit>(),
       child: const ControlScreen(),
     ),
-    const HomeTap(),
+    const SettingScreen(),
   ];
 
   @override
