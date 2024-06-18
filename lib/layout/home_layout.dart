@@ -31,8 +31,6 @@ class _HomeLayoutState extends State<HomeLayout> {
     if (pickedImage != null) {
       HomeLayoutCubit hlCubit = GetIt.instance<HomeLayoutCubit>();
       hlCubit.setImg(ImageModel(File(pickedImage.path)));
-      // image = File(pickedImage.path);
-
       return true;
     } else {
       return false;
@@ -63,7 +61,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           backgroundColor: Colors.transparent,
           extendBody: true,
           floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
+          FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
             onPressed: () async {
               if (await uploadImage()) {
@@ -90,8 +88,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               type: BottomNavigationBarType.fixed,
               currentIndex: index,
               onTap: (idx) {
-                index = idx;
-                setState(() {});
+                setState(() {
+                  index = idx;
+                });
               },
               items: [
                 BottomNavigationBarItem(
@@ -126,7 +125,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               ],
             ),
           ),
-          body: tabs[index],
+          body: SafeArea(
+            child: tabs[index],
+          ),
         ),
       ],
     );
